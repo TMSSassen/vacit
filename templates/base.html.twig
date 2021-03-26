@@ -1,3 +1,11 @@
+{% set address %}
+    <h1>ADRES</h1>
+    <p>Lorem ipsum</p>
+{% endset %}
+{% set privacy %}
+    <h1>PRIVACY</h1>
+    <p>Lorem ipsum</p>
+{% endset %}
 <!DOCTYPE html>
 <html>
     <head>
@@ -20,10 +28,10 @@
             {% block header %}
                 <div class="grid-x">
                     <div class="logo cell small-8 medium-6">
-                        full width cell
+                        <img src="{{ asset('assets/img/vacitlogo.svg') }}"/>
                     </div>
                     <div class="smallmenubuttons cell small-4 hide-for-medium">
-                        <i class="fas fa-bars"></i>
+                        <span><i class="fas fa-bars"></i></span>
                     </div>
                     <div class="mediummenubuttons cell medium-6 show-for-medium">
                         full width cell
@@ -40,14 +48,20 @@
         <div class="footer">
             {% block footer %}
                 <div class="grid-x">
-                    <div class="smallmenubuttons cell small-6 hide-for-medium">
-                        full width cell
+                    <div class="smalladdress cell small-6 hide-for-medium">
+                        <div class="grid-y">
+                            <div class="cell small-6">{{ address }}</div>
+                            <div class="cell small-6">{{ privacy }}</div>
+                        </div>
                     </div>
                     <div class="logo cell small-6 medium-3">
-                        full width cell
+                        <img src="{{ asset('assets/img/vacitlogo.svg') }}"/>
                     </div>
-                    <div class="mediummenubuttons cell medium-9 show-for-medium">
-                        full width cell
+                    <div class="mediumaddress cell medium-9 show-for-medium">
+                        <div class="grid-x">
+                            <div class="cell medium-6">{{ address }}</div>
+                            <div class="cell medium-6">{{ privacy }}</div>
+                        </div>
                     </div>
                 </div>
             {% endblock %}

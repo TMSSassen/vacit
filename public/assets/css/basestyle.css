@@ -1,10 +1,43 @@
-/*
-To change this license header, choose License Headers in Project Properties.
-To change this template file, choose Tools | Templates
-and open the template in the editor.
-*/
-/* 
-    Created on : 26-Mar-2021, 08:44:02
-    Author     : TSassen
-*/
-
+html,body
+{
+    height:100%;
+    width:100%;
+}
+.header,.footer
+{
+    background-color: #2a2e30;
+    color: white;
+    height: 100px;
+}
+.header div,.footer div
+{
+    height:100%;
+}
+.mainDiv
+{
+    height: calc(100% - 200px);
+}
+.logo img
+{
+    height:100%;
+}
+.footer p
+{
+    margin-bottom: 0px;
+    height:20px;
+}
+.footer h1
+{
+    height:calc(100% - 20px);
+    margin-bottom: 0px;
+}
+.smallmenubuttons span
+{
+    float:right;
+    font-size: 60px;
+    margin:10px;
+}
+.footer .logo img
+{
+    float:right;
+}
