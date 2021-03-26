@@ -17,4 +17,13 @@ class SolicitatieOverzichtController extends AbstractController
             'controller_name' => 'SolicitatieOverzichtController',
         ]);
     }
+    /**
+     * @Route("/vacature/overzicht", name="vacature_overzicht")
+     */
+    public function vacatureOverzicht(): Response
+    {
+        return $this->render('solicitatie_overzicht/index.html.twig', [
+            'controller_name' => 'SolicitatieOverzichtController',
+        ]);
+    }
 }

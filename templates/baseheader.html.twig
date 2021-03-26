@@ -1,0 +1,27 @@
+<div class="grid-x">
+    <div class="logo cell small-8 medium-6">
+        <img src="{{ asset('assets/img/vacitlogo.svg') }}"/>
+    </div>
+    <div class="smallmenubuttons cell small-4 hide-for-medium">
+        <span><i class="fas fa-bars"></i></span>
+            {% block buttonlijst %}
+            <ul>
+               {% if is_granted('ROLE_EMPLOYER') %}
+                   <li><a href="{{ path('profiel') }}">Mijn profiel</a></li>
+                   <li><a href="{{ path('vacature_overzicht') }}">Mijn vacatures</a></li>
+                   <li><a href="{{ path('app_logout') }}">Uitloggen</a></li>
+               {% elseif is_granted('IS_AUTHENTICATED_FULLY') %}
+                   <li><a href="{{ path('profiel') }}">Mijn profiel</a></li>
+                   <li><a href="{{ path('solicitatie_overzicht') }}">Mijn solicitaties</a></li>
+                   <li><a href="{{ path('app_logout') }}">Uitloggen</a></li>
+               {% else %}
+                   <li><a href="{{ path('register') }}">Registreren</a></li>
+                   <li><a href="{{ path('login') }}">Inloggen</a></li>
+               {% endif %}
+            </ul>
+        {% endblock %}
+    </div>
+    <div class="mediummenubuttons cell medium-6 show-for-medium">
+        {{ block('buttonlijst') }}                    
+    </div>
+</div>

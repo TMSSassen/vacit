@@ -1,0 +1,28 @@
+
+<div class="grid-x">
+    <div class="smalladdress cell small-8 hide-for-medium">
+        <div class="grid-y">
+            <div class="cell small-6">
+                {% block address %}
+                    <h1>ADRES</h1>
+                    <p>Lorem ipsum</p>
+                {% endblock %}
+            </div>
+            <div class="cell small-6">
+                {% block privacy %}
+                    <h1>PRIVACY</h1>
+                    <p>Lorem ipsum</p>
+                {% endblock %}
+            </div>
+        </div>
+    </div>
+    <div class="logo cell small-4 medium-3">
+        <img src="{{ asset('assets/img/vacitlogo.svg') }}"/>
+    </div>
+    <div class="mediumaddress cell medium-9 show-for-medium">
+        <div class="grid-x">
+            <div class="cell medium-6">{{ block('address') }}</div>
+            <div class="cell medium-6">{{ block('privacy') }}</div>
+        </div>
+    </div>
+</div>
