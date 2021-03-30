@@ -11,22 +11,23 @@
         {{ form_errors(form) }}
     </div>
     <span>
-        <p>Voornaam</p>{{ form_row(form.voornaam) }}
-        <p>Achternaam</p>{{ form_row(form.achternaam) }}
+        <p>Voornaam</p>{{ form_widget(form.voornaam) }}
+        <p>Achternaam</p>{{ form_widget(form.achternaam) }}
     </span>
     <span>
-        <p>Email</p>{{ form_row(form.email) }}
+        <p>Email</p>{{ form_widget(form.email) }}
     </span>
     <span>
-        <p>Geboortedatum</p>{{ form_row(form.geboortedatum) }}
-        <p>Telefoonnummer</p>{{ form_row(form.telefoonnummer) }}
+        <p>Geboortedatum</p>{{ form_widget(form.geboortedatum) }}
+        <p>Telefoonnummer</p>{{ form_widget(form.telefoonnummer) }}
     </span>
     <span>
-        <p>Adres</p>{{ form_row(form.adres) }}
+        <p>Adres</p>{{ form_widget(form.adres) }}
     </span>
     <span>
-        <p>Postcode</p>{{ form_row(form.postcode) }}
-        <p>Woonplaats</p>{{ form_row(form.woonplaats) }}
+        <p>Postcode</p>{{ form_widget(form.postcode) }}
+        <p>Woonplaats</p>{{ form_widget(form.woonplaats) }}
     </span>
+        <span onclick="$(this).parent().submit();">Register</span>
 {{ form_end(form) }}
 {% endblock %}

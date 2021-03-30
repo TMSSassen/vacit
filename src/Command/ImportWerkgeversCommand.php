@@ -8,36 +8,33 @@ use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Input\InputOption;
 use Symfony\Component\Console\Output\OutputInterface;
 use Symfony\Component\Console\Style\SymfonyStyle;
+use App\Service\ImportWerkgeversService;
 
-class ImportWerkgeversCommand extends Command
-{
-    protected static $defaultName = 'ImportWerkgeversCommand';
-    protected static $defaultDescription = 'Add a short description for your command';
+class ImportWerkgeversCommand extends Command {
 
-    protected function configure()
-    {
+    private $impService;
+
+    public function __construct(ImportWerkgeversService $impService) {
+        parent::__construct();
+        $this->impService = $impService;
+    }
+
+    protected function configure() {
         $this
-            ->setDescription(self::$defaultDescription)
-            ->addArgument('arg1', InputArgument::OPTIONAL, 'Argument description')
-            ->addOption('option1', null, InputOption::VALUE_NONE, 'Option description')
+                ->setName("app:import-spreadsheet")
+                ->setDescription("Import Excel Spreadsheet")
+                ->setHelp("This command allows you to import a spreadsheet")
+                ->addArgument("file", InputArgument::REQUIRED, "Spreadsheet")
         ;
     }
 
-    protected function execute(InputInterface $input, OutputInterface $output): int
-    {
-        $io = new SymfonyStyle($input, $output);
-        $arg1 = $input->getArgument('arg1');
-
-        if ($arg1) {
-            $io->note(sprintf('You passed an argument: %s', $arg1));
-        }
-
-        if ($input->getOption('option1')) {
-            // ...
-        }
-
-        $io->success('You have a new command! Now make it your own! Pass --help to see your options.');
-
-        return Command::SUCCESS;
+    protected function execute(InputInterface $input,
+            OutputInterface $output) {
+        $inputFileName = $input->getArgument("file");
+        $spreadsheet = IOFactory::load($inputFileName);
+        $data = $spreadsheet->getActiveSheet();
+        $this->impService->importSheet($data);
+        return 0;
     }
+
 }
