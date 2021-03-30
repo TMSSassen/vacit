@@ -51,9 +51,10 @@ class Vacature
     private $bedrijf_logo;
 
     /**
-     * @ORM\Column(type="string", length=50)
+     * @ORM\ManyToOne(targetEntity=platform::class)
+     * @ORM\JoinColumn(nullable=false)
      */
-    private $platform_logo;
+    private $platform;
 
     /**
      * @ORM\Column(type="text")

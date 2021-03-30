@@ -1,20 +1,32 @@
 {% extends 'base.html.twig' %}
 
 {% block title %}Hello RegisterController!{% endblock %}
+{% block stylesheets %}
+   <link rel="stylesheet" href="{{ asset('assets/css/register.css') }}"/>
+{% endblock %}
 
-{% block body %}
-<style>
-    .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
-    .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
-</style>
-
-<div class="example-wrapper">
-    <h1>Hello {{ controller_name }}! ✅</h1>
-
-    This friendly message is coming from:
-    <ul>
-        <li>Your controller at <code><a href="{{ 'C:/xampp8/htdocs/vacit/src/Controller/RegisterController.php'|file_link(0) }}">src/Controller/RegisterController.php</a></code></li>
-        <li>Your template at <code><a href="{{ 'C:/xampp8/htdocs/vacit/templates/register/index.html.twig'|file_link(0) }}">templates/register/index.html.twig</a></code></li>
-    </ul>
-</div>
+{% block main %}
+    {{ form_start(form) }}
+    <div class="my-custom-class-for-errors">
+        {{ form_errors(form) }}
+    </div>
+    <span>
+        <p>Voornaam</p>{{ form_row(form.voornaam) }}
+        <p>Achternaam</p>{{ form_row(form.achternaam) }}
+    </span>
+    <span>
+        <p>Email</p>{{ form_row(form.email) }}
+    </span>
+    <span>
+        <p>Geboortedatum</p>{{ form_row(form.geboortedatum) }}
+        <p>Telefoonnummer</p>{{ form_row(form.telefoonnummer) }}
+    </span>
+    <span>
+        <p>Adres</p>{{ form_row(form.adres) }}
+    </span>
+    <span>
+        <p>Postcode</p>{{ form_row(form.postcode) }}
+        <p>Woonplaats</p>{{ form_row(form.woonplaats) }}
+    </span>
+{{ form_end(form) }}
 {% endblock %}
