@@ -48,7 +48,7 @@ class Vacature
     /**
      * @ORM\Column(type="string", length=50)
      */
-    private $bedrijf_logo;
+    private $bedrijf_logo="";
 
     /**
      * @ORM\ManyToOne(targetEntity=Platform::class)
@@ -59,7 +59,7 @@ class Vacature
     /**
      * @ORM\Column(type="text")
      */
-    private $beschrijving;
+    private $beschrijving="";
 
     /**
      * @ORM\OneToMany(targetEntity=Solicitatie::class, mappedBy="vacature_id", orphanRemoval=true)
@@ -147,17 +147,14 @@ class Vacature
 
         return $this;
     }
-
-    public function getPlatformLogo(): ?string
+    function setPlatform(Platform $platform)
     {
-        return $this->platform_logo;
-    }
-
-    public function setPlatformLogo(string $platform_logo): self
-    {
-        $this->platform_logo = $platform_logo;
-
+        $this->platform=$platform;
         return $this;
+    }
+    function getPlatform():Platform
+    {
+        return $this->platform;
     }
 
     public function getBeschrijving(): ?string

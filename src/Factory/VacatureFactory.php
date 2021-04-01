@@ -35,7 +35,12 @@ final class VacatureFactory extends ModelFactory
 
     protected function getDefaults(): array
     {
+        $faker = \Faker\Factory::create();
         return [
+            'datum'=>$faker->dateTimeBetween('-3 months', 'now'),
+            'titel'=>$faker->title(),
+            'standplaats'=>$faker->city(),
+            'niveau'=>$faker->word()
             // TODO add your default values here (https://github.com/zenstruck/foundry#model-factories)
         ];
     }

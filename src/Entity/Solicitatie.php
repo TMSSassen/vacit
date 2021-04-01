@@ -3,6 +3,8 @@
 namespace App\Entity;
 
 use App\Repository\SolicitatieRepository;
+use App\Entity\User;
+use App\Entity\Vacature;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -23,13 +25,13 @@ class Solicitatie
     private $datum;
 
     /**
-     * @ORM\ManyToOne(targetEntity=user::class, inversedBy="solicitaties")
+     * @ORM\ManyToOne(targetEntity=User::class, inversedBy="solicitaties")
      * @ORM\JoinColumn(nullable=false)
      */
     private $user;
 
     /**
-     * @ORM\ManyToOne(targetEntity=vacature::class, inversedBy="solicitaties")
+     * @ORM\ManyToOne(targetEntity=Vacature::class, inversedBy="solicitaties")
      * @ORM\JoinColumn(nullable=false)
      */
     private $vacature;
@@ -37,7 +39,7 @@ class Solicitatie
     /**
      * @ORM\Column(type="boolean")
      */
-    private $uitgenodigd;
+    private $uitgenodigd=false;
 
     public function getId(): ?int
     {
@@ -56,24 +58,24 @@ class Solicitatie
         return $this;
     }
 
-    public function getUser(): ?user
+    public function getUser(): ?User
     {
         return $this->user;
     }
 
-    public function setUserId(?user $user): self
+    public function setUser(?User $user): self
     {
         $this->user = $user;
 
         return $this;
     }
 
-    public function getVacature(): ?vacature
+    public function getVacature(): ?Vacature
     {
         return $this->vacature;
     }
 
-    public function setVacature(?vacature $vacature): self
+    public function setVacature(?Vacature $vacature): self
     {
         $this->vacature = $vacature;
 

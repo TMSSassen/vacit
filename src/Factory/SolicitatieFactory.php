@@ -35,8 +35,9 @@ final class SolicitatieFactory extends ModelFactory
 
     protected function getDefaults(): array
     {
+        $faker = \Faker\Factory::create();
         return [
-            // TODO add your default values here (https://github.com/zenstruck/foundry#model-factories)
+            'datum'=>$faker->dateTimeBetween('-3 months', 'now')
         ];
     }
 
