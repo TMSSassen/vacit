@@ -71,6 +71,7 @@ class ImportWerkgeversService
             }
             $i++;
         }
+        $user->addRol('ROLE_EMPLOYER');
         $this->regService->register($user);
     }
 

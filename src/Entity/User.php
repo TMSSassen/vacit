@@ -38,12 +38,12 @@ class User implements UserInterface {
     /**
      * @ORM\Column(type="string", length=50)
      */
-    private $salt;
+    private $salt="";
 
     /**
      * @ORM\Column(name="is_active", type="boolean")
      */
-    private $isActive;
+    private $isActive=0;
 
     /**
      * @ORM\Column(type="json")
@@ -83,7 +83,7 @@ class User implements UserInterface {
     /**
      * @ORM\Column(type="text")
      */
-    private $beschrijving;
+    private $beschrijving="";
 
     /**
      * @ORM\Column(type="string", length=50, nullable=true)
@@ -221,6 +221,12 @@ class User implements UserInterface {
     public function setCvUrl(?string $cv_url): self {
         $this->cv_url = $cv_url;
 
+        return $this;
+    }
+    
+    function addRol(string $rol):self
+    {
+        $this->roles[]=$rol;
         return $this;
     }
 

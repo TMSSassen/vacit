@@ -9,28 +9,24 @@ use Symfony\Component\Routing\Annotation\Route;
 class RegisterController extends AbstractController
 {
     /**
+     * @Route("/success", name="task_success")
+     */
+    public function registerSuccess()
+    {
+        
+    }
+    /**
      * @Route("/register", name="register")
      */
-    public function index(\Symfony\Component\HttpFoundation\Request $request): Response
+    public function index(\Symfony\Component\HttpFoundation\Request $request, \App\Service\RegisterNewUserService $newUserService): Response
     {
         
         $user = new \App\Entity\User();
-        // ...
-
         $form = $this->createForm(\App\Form\Type\UserRegType::class, $user);
         $form->handleRequest($request);
         if ($form->isSubmitted() && $form->isValid()) {
-            // $form->getData() holds the submitted values
-            // but, the original `$task` variable has also been updated
-            $task = $form->getData();
-            
-
-            // ... perform some action, such as saving the task to the database
-            // for example, if Task is a Doctrine entity, save it!
-            // $entityManager = $this->getDoctrine()->getManager();
-            // $entityManager->persist($task);
-            // $entityManager->flush();
-
+            $user->addRol('ROLE_CANDIDATE');
+            $newUserService->registerUser($user);
             return $this->redirectToRoute('task_success');
         }
         return $this->render('register/index.html.twig', [
