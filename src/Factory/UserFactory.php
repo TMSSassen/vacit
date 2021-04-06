@@ -26,35 +26,40 @@ use Zenstruck\Foundry\Proxy;
  */
 final class UserFactory extends ModelFactory
 {
-    public function __construct()
+
+    /**
+     * @var UserPasswordEncoderInterface
+     */
+    private $passwordEncoder;
+
+    public function __construct(\Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface $passwordEncoder)
     {
         parent::__construct();
-
-        // TODO inject services if required (https://github.com/zenstruck/foundry#factories-as-services)
+        $this->passwordEncoder=$passwordEncoder;
+        $this->faker = \Faker\Factory::create();
     }
 
     protected function getDefaults(): array
     {
-        $faker = \Faker\Factory::create();
         return [
-            'voornaam'=>$faker->firstName(),
-            'geboortedatum'=>$faker->dateTimeBetween('-70 years', '-20 years'),
-            'achternaam'=>$faker->lastName(),
-            'email'=>$faker->email(),
-            'adres'=>$faker->streetAddress(),
-            'telefoonnummer'=>$faker->phoneNumber(),
-            'woonplaats'=>$faker->city(),
-            'postcode'=>$faker->postcode(),
-            'password'=>$faker->password(),
-            'roles'=>[$faker->randomElement(['ROLE_CANDIDATE','ROLE_EMPLOYER'])]
+            'voornaam'=>$this->faker->firstName(),
+            'geboortedatum'=>$this->faker->dateTimeBetween('-70 years', '-20 years'),
+            'achternaam'=>$this->faker->lastName(),
+            'email'=>$this->faker->email(),
+            'adres'=>$this->faker->streetAddress(),
+            'telefoonnummer'=>$this->faker->phoneNumber(),
+            'woonplaats'=>$this->faker->city(),
+            'postcode'=>$this->faker->postcode(),
+            'roles'=>[$this->faker->randomElement(['ROLE_CANDIDATE','ROLE_EMPLOYER'])]
         ];
     }
 
     protected function initialize(): self
     {
-        // see https://github.com/zenstruck/foundry#initialization
         return $this
-            // ->afterInstantiate(function(User $user) {})
+            ->afterInstantiate(function(User $user) {
+                $user->setPassword($this->passwordEncoder->encodePassword($user, $this->faker->password()));
+            })
         ;
     }
 

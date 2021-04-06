@@ -7,12 +7,13 @@ use Doctrine\Persistence\ObjectManager;
 use \App\Factory\UserFactory;
 use \App\Factory\SolicitatieFactory;
 use App\Factory\VacatureFactory;
+use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
 
 class AppFixtures extends Fixture
 {
     public function load(ObjectManager $manager)
     {
-            $faker = \Faker\Factory::create();
+        $faker = \Faker\Factory::create();
         $platforms=$this->createPlatforms($manager);
         // $product = new Product();
         // $manager->persist($product);
