@@ -26,3 +26,5 @@ security:
             form_login:
                 # ...
                 csrf_token_generator: security.csrf.token_manager
+    role_hierarchy:
+        ROLE_ADMIN: [ROLE_CANDIDATE,ROLE_EMPLOYER]
