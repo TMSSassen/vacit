@@ -35,11 +35,21 @@ class Solicitatie
      * @ORM\JoinColumn(nullable=false)
      */
     private $vacature;
+    
+    /**
+     * @ORM\Column(type="text")
+     */
+    private $motivatie="";
 
     /**
      * @ORM\Column(type="boolean")
      */
     private $uitgenodigd=false;
+    
+    public function setMotivatie($motivatie)
+    {
+        $this->motivatie=$motivatie;
+    }
 
     public function getId(): ?int
     {

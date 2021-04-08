@@ -18,6 +18,13 @@ class VacatureRepository extends ServiceEntityRepository
     {
         parent::__construct($registry, Vacature::class);
     }
+    public function getAll(){
+        return $this->findAll();
+    }
+    
+    public function getMostRecent($maxResults=3){
+        return $this->findBy([],['datum'=>'ASC'],$maxResults);
+    }
 
     // /**
     //  * @return Vacature[] Returns an array of Vacature objects

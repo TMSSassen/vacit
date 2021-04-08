@@ -20,18 +20,15 @@ class RegisterController extends AbstractController
      */
     public function index(\Symfony\Component\HttpFoundation\Request $request, \App\Service\RegisterNewUserService $newUserService): Response
     {
-        
-        $user = new \App\Entity\User();
-        $form = $this->createForm(\App\Form\Type\UserRegType::class, $user);
-        $form->handleRequest($request);
-        if ($form->isSubmitted() && $form->isValid()) {
+        $submittedToken = $request->request->get('token');
+        if ($this->isCsrfTokenValid('register', $submittedToken)) {
+            $user=$newUserService->getUserFromFields($request->request);
             $user->addRol('ROLE_CANDIDATE');
             $newUserService->registerUser($user);
             return $this->redirectToRoute('task_success');
         }
         return $this->render('register/index.html.twig', [
-            'controller_name' => 'RegisterController',
-            'form'=>$form->createView()
+            'controller_name' => 'RegisterController'
         ]);
     }
 }

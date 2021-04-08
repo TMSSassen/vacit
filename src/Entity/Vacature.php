@@ -30,7 +30,7 @@ class Vacature
     private $titel;
 
     /**
-     * @ORM\ManyToOne(targetEntity=user::class, inversedBy="vacatures")
+     * @ORM\ManyToOne(targetEntity=User::class, inversedBy="vacatures")
      * @ORM\JoinColumn(nullable=false)
      */
     private $bedrijf;
@@ -65,6 +65,7 @@ class Vacature
      * @ORM\OneToMany(targetEntity=Solicitatie::class, mappedBy="vacature_id", orphanRemoval=true)
      */
     private $solicitaties;
+    
 
     public function __construct()
     {

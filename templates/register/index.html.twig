@@ -6,27 +6,60 @@
 {% endblock %}
 
 {% block main %}
-    {{ form_start(form) }}
-    <div class="my-custom-class-for-errors">
-        {{ form_errors(form) }}
+ <form method="POST">
+  <div class="grid-container">
+    <div class="grid-x grid-padding-x">
+        <h1 class="medium-12 cell">Mijn profiel</h1>
+      <div class="medium-6 cell">
+        <label>Voornaam
+          <input type="text" placeholder=".medium-6.cell" name="voornaam">
+        </label>
+      </div>
+      <div class="medium-6 cell">
+        <label>Achternaam
+          <input type="text" placeholder=".medium-6.cell" name="achternaam">
+        </label>
+      </div>
+      <div class="medium-12 cell">
+        <label>Email
+          <input type="email" placeholder=".medium-6.cell" name="email">
+        </label>
+      </div>
+      <div class="medium-12 cell">
+        <label>Password
+          <input type="password" placeholder=".medium-6.cell" name="password">
+        </label>
+      </div>
+      <div class="medium-4 cell">
+        <label>Geboortedatum
+          <input type="date" placeholder=".medium-6.cell" name="geboortedatum">
+        </label>
+      </div>
+      <div class="medium-8 cell">
+        <label>telefoonnummer
+          <input type="tel" placeholder=".medium-6.cell" name="telefoonnummer">
+        </label>
+      </div>
+      <div class="medium-12 cell">
+        <label>Adres
+          <input type="text" placeholder=".medium-6.cell" name="adres">
+        </label>
+      </div>
+      <div class="medium-4 cell">
+        <label>Postcode
+          <input type="text" placeholder=".medium-6.cell" name="postcode">
+        </label>
+      </div>
+      <div class="medium-8 cell">
+        <label>Woonplaats
+          <input type="text" placeholder=".medium-6.cell" name="woonplaats">
+        </label>
+      </div>
+      <div class="medium-12 cell">
+          <input type="submit" name="submit" value="Save">
+      </div>
     </div>
-    <span>
-        <p>Voornaam</p>{{ form_widget(form.voornaam) }}
-        <p>Achternaam</p>{{ form_widget(form.achternaam) }}
-    </span>
-    <span>
-        <p>Email</p>{{ form_widget(form.email) }}
-    </span>
-    <span>
-        <p>Geboortedatum</p>{{ form_widget(form.geboortedatum) }}
-        <p>Telefoonnummer</p>{{ form_widget(form.telefoonnummer) }}
-    </span>
-    <span>
-        <p>Adres</p>{{ form_widget(form.adres) }}
-    </span>
-    <span>
-        <p>Postcode</p>{{ form_widget(form.postcode) }}
-        <p>Woonplaats</p>{{ form_widget(form.woonplaats) }}
-    </span>
-{{ form_end(form) }}
+  </div>
+     <input type="hidden" name="token" value="{{ csrf_token('register') }}"/>
+</form>
 {% endblock %}

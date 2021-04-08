@@ -2,3 +2,8 @@
 
 {% block title %}Hello HomepageController!{% endblock %}
 
+{% block main %}
+    {% for vacature in most_recent %}
+        {{ vacature.titel }}
+    {% endfor %}
+{% endblock %}
