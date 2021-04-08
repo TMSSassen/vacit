@@ -20,10 +20,14 @@ use DateTime;
 class NieuweVacatureService {
     //put your code here
     
-    public function createNewVacature()
+    public function createNewVacature(User $user)
     {
         $vacature=new Vacature();
         $vacature->setDatum(new DateTime('now'));
         $vacature->setBedrijf($user);
+        $vacature->setBeschrijving($beschrijving);
+        $vacature->setNiveau($niveau);
+        $vacature->setTitel($titel);
+        
     }
 }
