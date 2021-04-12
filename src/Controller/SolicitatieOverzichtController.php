@@ -6,6 +6,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\HttpFoundation\Request;
+use App\Entity\Vacature;
 
 class SolicitatieOverzichtController extends AbstractController
 {
@@ -31,7 +32,7 @@ class SolicitatieOverzichtController extends AbstractController
      */
     public function index(Request $request): Response
     {        
-        return $this->render('solicitatie_overzicht/index.html.twig', [
+        return $this->render('solicitatie_overzicht/SolicitatieOverzicht.html.twig', [
             'controller_name' => 'SolicitatieOverzichtController',
         ]);
     }
@@ -41,10 +42,14 @@ class SolicitatieOverzichtController extends AbstractController
     public function vacatureOverzicht(Request $request): Response
     {
         $submittedToken = $request->request->get('token');
-        if ($this->isCsrfTokenValid('nieuweSolicitatie', $submittedToken)) {
-            
+        if ($this->isCsrfTokenValid('nieuweVacature', $submittedToken)) {
+            $this->newVacService->createNewVacature($this->getUser(),
+                    $request->request->get('beschrijving'),
+                    $request->request->get('niveau'),
+                    $request->request->get('titel'),
+                    $request->request->get('platform'));
         }
-        return $this->render('solicitatie_overzicht/index.html.twig', [
+        return $this->render('solicitatie_overzicht/VacatureOverzicht.html.twig', [
             'controller_name' => 'SolicitatieOverzichtController',
         ]);
     }

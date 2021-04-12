@@ -6,26 +6,42 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use \Symfony\Component\HttpFoundation\Request;
+use App\Entity\User;
+use App\Repository\UserRepository;
 
 class ProfielController extends AbstractController
 {
     /**
-     * @Route("/profiel", name="profiel")
+     * @Route("/profiel/{id}", name="profiel")
      */
-    public function index(Request $request): Response
+    public function index(Request $request, UserRepository $usRep,$id): Response
     {
-        
-        $user = new \App\Entity\User();
-        $form = $this->createForm(\App\Form\Type\ProfielCandidateType::class, $user);
-        $form->handleRequest($request);
-        if ($form->isSubmitted() && $form->isValid()) {
-            $user->addRol('ROLE_CANDIDATE');
-            $newUserService->registerUser($user);
-            return $this->redirectToRoute('task_success');
+        $currentUser=$this->getUser();
+        $profile=$usRep->find($id);
+        if(!$profile){
+            throw new InvalidParameterException();
+        }
+        if($currentUser->getId()===$id || $this->isGranted('ROLE_ADMIN'))
+        {
+            return $this->editableTemplate($request,$profile);
+        }
+        return $this->uneditableTemplate($profile);
+    }
+    
+    private function editableTemplate(Request $request,User $profile){
+        $submittedToken = $request->request->get('token');
+        if ($this->isCsrfTokenValid('editprofile', $submittedToken)) {
+            
         }
         return $this->render('profiel/index.html.twig', [
             'controller_name' => 'ProfielController',
-            'form'=>$form->createView()
+            'user'=>$profile
         ]);
+    }
+    private function uneditableTemplate(User $profile){
+        return $this->render('profiel/fixed.html.twig', [
+            'controller_name' => 'ProfielController',
+            'user'=>$profile
+        ]);        
     }
 }

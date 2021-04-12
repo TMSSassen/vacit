@@ -35,7 +35,7 @@ class VacatureDetailController extends AbstractController
         if ($this->isCsrfTokenValid('nieuweSolicitatie', $submittedToken)) {
             $this->denyAccessUnlessGranted('IS_AUTHENTICATED_FULLY');
             $vacature=$this->vacRepos->find($id);
-            $this->newSolService->createNewSollcitatie($this->getUser(), $vacature);
+            $this->newSolService->createNewSolicitatie($this->getUser(), $vacature);
         }
         return $this->render('vacature_detail/index.html.twig', [
             'controller_name' => 'VacatureDetailController',

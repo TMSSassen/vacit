@@ -1,0 +1,36 @@
+
+  <div class="grid-container nieuweVacature" id="vac_form">
+      <input type="submit" value="x" onclick="$('#vac_form').hide();">
+ <form method="POST">
+    <div class="grid-x grid-padding-x">
+      <div class="medium-12 cell">
+        <label>Titel
+          <input type="text" placeholder=".medium-6.cell" name="titel">
+        </label></div>
+      <div class="medium-6 cell">
+        <label>Niveau
+          <input type="text" placeholder=".medium-6.cell" name="niveau">
+        </label>
+      </div>
+      <div class="medium-6 cell">
+        <label>Platform
+            <select name="platform">
+                {% for option in platforms %}
+                    <option value="{{ option }}">{{ option }}</option>
+                {% endfor %}
+            </select>
+        </label>
+      </div>
+      <div class="medium-12 cell">
+        <label>Beschrijving
+            <textarea name="beschrijving">
+            </textarea>
+        </label>
+      </div>
+      <div class="medium-12 cell">
+          <input type="submit" name="submit" value="Save">
+      </div>
+    </div>
+     <input type="hidden" name="token" value="{{ csrf_token('nieuwe_solicitatie') }}"/>
+</form>
+  </div>

@@ -17,10 +17,12 @@ use App\Entity\Solicitatie;
  */
 class NieuweSolicitatieService {
     //put your code here
-    public function createNewSollcitatie($user,$vacature)
+    public function createNewSolicitatie($user,$vacature,$motivatie)
     {
         $newSol=new Solicitatie();
         $newSol->setDatum(new DateTime('now'));
         $newSol->setVacature($vacature);
+        $newSol->setUser($user);
+        $newSol->setMotivatie($motivatie);
     }
 }
