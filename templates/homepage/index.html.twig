@@ -3,7 +3,8 @@
 {% block title %}Hello HomepageController!{% endblock %}
 
 {% block javascripts %}
-    <meta id="vacatures" content="{{ all_vacatures|json_encode() }}">
+    <meta id="vacatures" content="{{ all_vacatures_json }}">
+    <meta id="img_path" content="{{ asset('assets/img/') }}">
     <script src="{{ asset('assets/js/homepage.js') }}"></script>
 {% endblock %}
 {% block main %}
@@ -11,9 +12,7 @@
         <div class="grid-x grid-padding-x">
             <div class="cell medium-2">
                 <div>
-                <svg height="100" width="100">
-                    <polygon points="25 0,75 0,100 50,75 100,25 100,0 50" fill="black"/>
-                    </svg>
+                    <img id="platform" width="200px" heihgt="200px"/>
                     <h1 id="titel"></h1>
                     <h1 id="werkgever"></h1>
                 </div>

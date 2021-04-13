@@ -9,7 +9,7 @@
 namespace App\Service;
 
 use \App\Repository\VacatureRepository;
-use \Symfony\Component\Serializer\Encoder\JsonEncoder;
+use \Symfony\Component\Serializer\Encoder\EncoderInterface;
 /**
  * Description of VacaturesHomepageEncoderService
  *
@@ -29,7 +29,7 @@ class VacaturesHomepageEncoderService {
 
     //put your code here
     
-    public function __construct(VacatureRepository $vacRep, JsonEncoder  $encoder) {
+    public function __construct(VacatureRepository $vacRep, EncoderInterface  $encoder) {
         $this->vacRep = $vacRep;
         $this->encoder = $encoder;
     }
@@ -45,7 +45,8 @@ class VacaturesHomepageEncoderService {
                 "titel"=>$vacature->getTitel(),
                 "platform"=>$vacature->getPlatform()->getNaam(),
                 "bedrijf"=>$vacature->getBedrijf()->getUsername(),
-                "standplaats"=>$vacature->getStandplaats()
+                "standplaats"=>$vacature->getStandplaats(),
+                "niveau"=>$vacature->getNiveau()
             );
             
         }
