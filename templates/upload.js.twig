@@ -1,0 +1,37 @@
+<script src="{{ asset('assets/js/SimpleAjaxUploader.min.js')|raw }}"></script>
+<script>
+    $(document).ready(function () {
+        let uploader = new ss.SimpleUpload({
+            button: "upload",
+            url: "{{ path(upload_path,{'id':id}) }}",
+            name: 'file', // upload parameter name die gebruikt wordt in de controller
+            responseType: 'json',
+            allowedExtensions: ['png', 'jpg', 'jpeg', 'pdf'],
+            hoverClass: 'hover-class-upload',
+            focusClass: 'hover-class-upload',
+            multiple: false,
+            disabledClass: 'ui-state-disabled',
+            autoSubmit: true,
+            data: {"token":"{{ csrf_token('upload')}}"},
+            onSizeError: function () {
+                alert('File may not exceed 100MB');
+            },
+            onExtError: function () {
+                alert('Invalid file type. Please use a PNG, JPG or JPEG or PDF file');
+            },
+            onSubmit: function (filename, extension, uploadBtn, fileSize) {
+                /// Bijvoorbeeld een overlay of een spinner starten...
+                return(true);
+            },
+            onComplete: function (filename, response) {
+                if (response.success === false) {
+                    alert(response);
+                } else {
+    {% block handleUploadResponse %}
+                        location.reload();
+    {% endblock %}
+                    }
+                }
+            });
+        });
+</script>

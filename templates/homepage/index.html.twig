@@ -3,25 +3,30 @@
 {% block title %}Hello HomepageController!{% endblock %}
 
 {% block javascripts %}
-    <meta id="vacatures" content="{{ all_vacatures_json }}">
-    <meta id="img_path" content="{{ asset('assets/img/') }}">
     <script src="{{ asset('assets/js/homepage.js') }}"></script>
+    <script src="{{ asset('assets/vegas/vegas.min.js') }}"></script>
+    {% include 'homepage/cycleVacature.js.twig' %}
+{% endblock %}
+
+{% block stylesheets %}
+    <link rel="stylesheet" href="{{ asset('assets/vegas/vegas.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('assets/css/homepage.css') }}">
 {% endblock %}
 {% block main %}
     <div class="grid-container">
         <div class="grid-x grid-padding-x">
             <div class="cell medium-2">
                 <div>
-                    <img id="platform" width="200px" heihgt="200px"/>
-                    <h1 id="titel"></h1>
-                    <h1 id="werkgever"></h1>
-                </div>
-            </div>
-            <div class="cell medium-10">
-                {% for vacature in most_recent %}
-                    {{ vacature.titel }}
-                {% endfor %}
+                    <div class="platform_logo" id="platform"/></div>
+                <h1 id="titel">titel</h1>
+                <h1 id="werkgever">werkgever</h1>
             </div>
         </div>
+        <div class="cell medium-10">
+            {% for vacature in most_recent %}
+                {{ vacature.titel }}
+            {% endfor %}
+        </div>
     </div>
+</div>
 {% endblock %}

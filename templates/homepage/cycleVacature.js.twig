@@ -1,0 +1,21 @@
+<script>
+        let slides = [
+        {% for vacature in alle_vacatures %}
+                {
+                    "src": "{{ asset("assets/img/#{vacature.platform.naam}.svg") }}",
+                    "beschrijving":"{{ "#{vacature.niveau} #{vacature.titel}" }}",
+                    "locatie":"{{ "#{vacature.bedrijf.achternaam} #{vacature.bedrijf.woonplaats}" }}"
+                },
+        {% endfor %}
+            ];
+            $(document).ready(function ()
+            {
+                $('#platform').vegas({
+                    slides: slides,
+                    walk: (index, slide) => {
+                        $('#titel').text(slide.beschrijving);
+                        $('#werkgever').text(slide.locatie);
+                    }
+                });
+            });  
+ </script>

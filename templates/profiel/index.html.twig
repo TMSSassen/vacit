@@ -5,57 +5,60 @@
 {% block javascripts %}
     <script src="{{ asset('assets/js/jquery.richtext.min.js') }}"></script>
     <script src="{{ asset('assets/js/profieleditor.js') }}"></script>
+    {% include 'upload.js.twig' %}
 {% endblock %}
 {% block stylesheets %}
         <link rel="stylesheet" href="{{ asset('assets/css/richtext.min.css') }}">
 {% endblock %}
 {% block main %}
+    <div id="upload"></div>
     <form>
   <div class="grid-container">
     <div class="grid-x grid-padding-x">
         <h1 class="medium-12 cell">Mijn profiel</h1>
       <div class="medium-6 cell">
         <label>Voornaam
-          {% block voornaam %}<input type="text" placeholder=".medium-6.cell" name="voornaam">{% endblock %}
+          <input type="text" placeholder=".medium-6.cell" name="voornaam">
         </label>
       </div>
       <div class="medium-6 cell">
         <label>Achternaam
-          {% block achternaam %}<input type="text" placeholder=".medium-6.cell" name="achternaam">{% endblock %}
+          <input type="text" placeholder=".medium-6.cell" name="achternaam">
         </label>
       </div>
       <div class="medium-12 cell">
         <label>Email
-          {% block email %}<input type="email" placeholder=".medium-6.cell" name="email">{% endblock %}
+          <input type="email" placeholder=".medium-6.cell" name="email">
         </label>
       </div>
       <div class="medium-4 cell">
         <label>Geboortedatum
-          {% block geboortedatum %}<input type="date" placeholder=".medium-6.cell" name="geboortedatum">{% endblock %}
+          <input type="date" placeholder=".medium-6.cell" name="geboortedatum">
         </label>
       </div>
       <div class="medium-8 cell">
         <label>telefoonnummer
-          {% block telefoonnummer %}<input type="tel" placeholder=".medium-6.cell" name="telefoonnummer">{% endblock %}
+          <input type="tel" placeholder=".medium-6.cell" name="telefoonnummer">
         </label>
       </div>
       <div class="medium-12 cell">
         <label>Adres
-          {% block voornaam %}<input type="text" placeholder=".medium-6.cell" name="adres">{% endblock %}
+          <input type="text" placeholder=".medium-6.cell" name="adres">
         </label>
       </div>
       <div class="medium-4 cell">
         <label>Postcode
-          {% block postcode %}<input type="text" placeholder=".medium-6.cell" name="postcode">{% endblock %}
+          <input type="text" placeholder=".medium-6.cell" name="postcode">
         </label>
       </div>
       <div class="medium-8 cell">
         <label>Woonplaats
-          {% block woonplaats %}<input type="text" placeholder=".medium-6.cell" name="woonplaats">{% endblock %}
+          <input type="text" placeholder=".medium-6.cell" name="woonplaats">
         </label>
       </div>
       <h1 class="medium-12 cell">Motivatie</h1>
-      {% block motivatie %}<textarea class="medium-12 cell"></textarea>
+      <textarea class="medium-12 cell"></textarea>
+     <input type="hidden" name="token" value="{{ csrf_token('register') }}"/>
     </div>
   </div>
     </form>

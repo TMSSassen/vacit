@@ -11,7 +11,7 @@
                    <li><a href="{{ path('vacature_overzicht') }}">Mijn vacatures</a></li>
                    <li><a href="{{ path('app_logout') }}">Uitloggen</a></li>
                {% elseif is_granted('IS_AUTHENTICATED_FULLY') %}
-                   <li><a href="{{ path('profiel') }}">Mijn profiel</a></li>
+                   <li><a href="{{ path('profiel',{"id":app.user.id}) }}">Mijn profiel</a></li>
                    <li><a href="{{ path('solicitatie_overzicht') }}">Mijn solicitaties</a></li>
                    <li><a href="{{ path('app_logout') }}">Uitloggen</a></li>
                {% else %}
