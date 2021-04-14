@@ -17,13 +17,13 @@ use App\Library\FileUpload;
  */
 class FileUploadService {
 
-    static function upload_file($name = 'file', $path = "public/assets/img") {/// Dit bijvoorkeur uit je .env halen!
+    static function upload_file($name = 'file', $path = null) {/// Dit bijvoorkeur uit je .env halen!
         $path = $path ?? \getenv('FILE_UPLOAD_PATH');
 
         $file_id = \uniqid();
         $uploader = new FileUpload($name);
         $uploader->newFileName = $file_id . "-" . strtolower(str_replace(" ", "-", $uploader->getFileName()));
-        $result = $uploader->handleUpload("$path");
+        $result = $uploader->handleUpload(__DIR__."/../../$path");
 
         /// Voor afbeeldingen
         // list($w, $h) = getimagesize($path . $uploader->newFileName);
