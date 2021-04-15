@@ -2,25 +2,25 @@
 
 namespace App\Repository;
 
-use App\Entity\Solicitatie;
+use App\Entity\Sollicitatie;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Persistence\ManagerRegistry;
 
 /**
- * @method Solicitatie|null find($id, $lockMode = null, $lockVersion = null)
- * @method Solicitatie|null findOneBy(array $criteria, array $orderBy = null)
- * @method Solicitatie[]    findAll()
- * @method Solicitatie[]    findBy(array $criteria, array $orderBy = null, $limit = null, $offset = null)
+ * @method Sollicitatie|null find($id, $lockMode = null, $lockVersion = null)
+ * @method Sollicitatie|null findOneBy(array $criteria, array $orderBy = null)
+ * @method Sollicitatie[]    findAll()
+ * @method Sollicitatie[]    findBy(array $criteria, array $orderBy = null, $limit = null, $offset = null)
  */
-class SolicitatieRepository extends ServiceEntityRepository
+class SollicitatieRepository extends ServiceEntityRepository
 {
     public function __construct(ManagerRegistry $registry)
     {
-        parent::__construct($registry, Solicitatie::class);
+        parent::__construct($registry, Sollicitatie::class);
     }
 
     // /**
-    //  * @return Solicitatie[] Returns an array of Solicitatie objects
+    //  * @return Sollicitatie[] Returns an array of Sollicitatie objects
     //  */
     /*
     public function findByExampleField($value)
@@ -37,7 +37,7 @@ class SolicitatieRepository extends ServiceEntityRepository
     */
 
     /*
-    public function findOneBySomeField($value): ?Solicitatie
+    public function findOneBySomeField($value): ?Sollicitatie
     {
         return $this->createQueryBuilder('s')
             ->andWhere('s.exampleField = :val')

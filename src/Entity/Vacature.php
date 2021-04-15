@@ -62,14 +62,14 @@ class Vacature
     private $beschrijving="";
 
     /**
-     * @ORM\OneToMany(targetEntity=Solicitatie::class, mappedBy="vacature_id", orphanRemoval=true)
+     * @ORM\OneToMany(targetEntity=Sollicitatie::class, mappedBy="vacature_id", orphanRemoval=true)
      */
-    private $solicitaties;
+    private $sollicitaties;
     
 
     public function __construct()
     {
-        $this->solicitaties = new ArrayCollection();
+        $this->sollicitaties = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -171,29 +171,29 @@ class Vacature
     }
 
     /**
-     * @return Collection|Solicitatie[]
+     * @return Collection|Sollicitatie[]
      */
-    public function getSolicitaties(): Collection
+    public function getSollicitaties(): Collection
     {
-        return $this->solicitaties;
+        return $this->sollicitaties;
     }
 
-    public function addSolicitaty(Solicitatie $solicitaty): self
+    public function addSollicitaty(Sollicitatie $sollicitaty): self
     {
-        if (!$this->solicitaties->contains($solicitaty)) {
-            $this->solicitaties[] = $solicitaty;
-            $solicitaty->setVacatureId($this);
+        if (!$this->sollicitaties->contains($sollicitaty)) {
+            $this->sollicitaties[] = $sollicitaty;
+            $sollicitaty->setVacatureId($this);
         }
 
         return $this;
     }
 
-    public function removeSolicitaty(Solicitatie $solicitaty): self
+    public function removeSollicitaty(Sollicitatie $sollicitaty): self
     {
-        if ($this->solicitaties->removeElement($solicitaty)) {
+        if ($this->sollicitaties->removeElement($sollicitaty)) {
             // set the owning side to null (unless already changed)
-            if ($solicitaty->getVacatureId() === $this) {
-                $solicitaty->setVacatureId(null);
+            if ($sollicitaty->getVacatureId() === $this) {
+                $sollicitaty->setVacatureId(null);
             }
         }
 

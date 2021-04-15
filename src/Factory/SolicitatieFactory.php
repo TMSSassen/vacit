@@ -2,29 +2,29 @@
 
 namespace App\Factory;
 
-use App\Entity\Solicitatie;
-use App\Repository\SolicitatieRepository;
+use App\Entity\Sollicitatie;
+use App\Repository\SollicitatieRepository;
 use Zenstruck\Foundry\RepositoryProxy;
 use Zenstruck\Foundry\ModelFactory;
 use Zenstruck\Foundry\Proxy;
 
 /**
- * @method static Solicitatie|Proxy createOne(array $attributes = [])
- * @method static Solicitatie[]|Proxy[] createMany(int $number, $attributes = [])
- * @method static Solicitatie|Proxy find($criteria)
- * @method static Solicitatie|Proxy findOrCreate(array $attributes)
- * @method static Solicitatie|Proxy first(string $sortedField = 'id')
- * @method static Solicitatie|Proxy last(string $sortedField = 'id')
- * @method static Solicitatie|Proxy random(array $attributes = [])
- * @method static Solicitatie|Proxy randomOrCreate(array $attributes = [])
- * @method static Solicitatie[]|Proxy[] all()
- * @method static Solicitatie[]|Proxy[] findBy(array $attributes)
- * @method static Solicitatie[]|Proxy[] randomSet(int $number, array $attributes = [])
- * @method static Solicitatie[]|Proxy[] randomRange(int $min, int $max, array $attributes = [])
- * @method static SolicitatieRepository|RepositoryProxy repository()
- * @method Solicitatie|Proxy create($attributes = [])
+ * @method static Sollicitatie|Proxy createOne(array $attributes = [])
+ * @method static Sollicitatie[]|Proxy[] createMany(int $number, $attributes = [])
+ * @method static Sollicitatie|Proxy find($criteria)
+ * @method static Sollicitatie|Proxy findOrCreate(array $attributes)
+ * @method static Sollicitatie|Proxy first(string $sortedField = 'id')
+ * @method static Sollicitatie|Proxy last(string $sortedField = 'id')
+ * @method static Sollicitatie|Proxy random(array $attributes = [])
+ * @method static Sollicitatie|Proxy randomOrCreate(array $attributes = [])
+ * @method static Sollicitatie[]|Proxy[] all()
+ * @method static Sollicitatie[]|Proxy[] findBy(array $attributes)
+ * @method static Sollicitatie[]|Proxy[] randomSet(int $number, array $attributes = [])
+ * @method static Sollicitatie[]|Proxy[] randomRange(int $min, int $max, array $attributes = [])
+ * @method static SollicitatieRepository|RepositoryProxy repository()
+ * @method Sollicitatie|Proxy create($attributes = [])
  */
-final class SolicitatieFactory extends ModelFactory
+final class SollicitatieFactory extends ModelFactory
 {
     public function __construct()
     {
@@ -45,12 +45,12 @@ final class SolicitatieFactory extends ModelFactory
     {
         // see https://github.com/zenstruck/foundry#initialization
         return $this
-            // ->afterInstantiate(function(Solicitatie $solicitatie) {})
+            // ->afterInstantiate(function(Sollicitatie $sollicitatie) {})
         ;
     }
 
     protected static function getClass(): string
     {
-        return Solicitatie::class;
+        return Sollicitatie::class;
     }
 }

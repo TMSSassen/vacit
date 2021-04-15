@@ -8,7 +8,7 @@ use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\HttpFoundation\Request;
 use App\Entity\Vacature;
 
-class SolicitatieOverzichtController extends AbstractController
+class SollicitatieOverzichtController extends AbstractController
 {
 
     /**
@@ -17,23 +17,23 @@ class SolicitatieOverzichtController extends AbstractController
     private $newVacService;
 
     /**
-     * @var \App\Service\NieuweSolicitatieService
+     * @var \App\Service\NieuweSollicitatieService
      */
     private $newSolService;
 
-    public function __construct(\App\Service\NieuweSolicitatieService $newSolService,
+    public function __construct(\App\Service\NieuweSollicitatieService $newSolService,
             \App\Service\NieuweVacatureService $newVacService) {
         ;
         $this->newSolService = $newSolService;
         $this->newVacService = $newVacService;
     }
     /**
-     * @Route("/solicitatie/overzicht", name="solicitatie_overzicht")
+     * @Route("/sollicitatie/overzicht", name="sollicitatie_overzicht")
      */
     public function index(Request $request): Response
     {        
-        return $this->render('solicitatie_overzicht/SolicitatieOverzicht.html.twig', [
-            'controller_name' => 'SolicitatieOverzichtController',
+        return $this->render('sollicitatie_overzicht/SollicitatieOverzicht.html.twig', [
+            'controller_name' => 'SollicitatieOverzichtController',
         ]);
     }
     /**
@@ -49,8 +49,8 @@ class SolicitatieOverzichtController extends AbstractController
                     $request->request->get('titel'),
                     $request->request->get('platform'));
         }
-        return $this->render('solicitatie_overzicht/VacatureOverzicht.html.twig', [
-            'controller_name' => 'SolicitatieOverzichtController',
+        return $this->render('sollicitatie_overzicht/VacatureOverzicht.html.twig', [
+            'controller_name' => 'SollicitatieOverzichtController',
         ]);
     }
 }

@@ -2,9 +2,9 @@
 <script>
     $(document).ready(function () {
         let uploader = new ss.SimpleUpload({
-            button: "upload",
+            button: "upload_{{ upload_field_name }}",
             url: "{{ path(upload_path,{'id':id}) }}",
-            name: 'file', // upload parameter name die gebruikt wordt in de controller
+            name: '{{ upload_field_name }}', // upload parameter name die gebruikt wordt in de controller
             responseType: 'json',
             allowedExtensions: ['png', 'jpg', 'jpeg', 'pdf'],
             hoverClass: 'hover-class-upload',

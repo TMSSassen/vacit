@@ -5,13 +5,13 @@
 {% block javascripts %}
     <script src="{{ asset('assets/js/jquery.richtext.min.js') }}"></script>
     <script src="{{ asset('assets/js/profieleditor.js') }}"></script>
-    {% include 'upload.js.twig' %}
+    {% include 'upload.js.twig' with {'upload_field_name':'file'} %}
 {% endblock %}
 {% block stylesheets %}
         <link rel="stylesheet" href="{{ asset('assets/css/richtext.min.css') }}">
 {% endblock %}
 {% block main %}
-    <div id="upload"></div>
+    <div id="upload_file"></div>
     <form>
   <div class="grid-container">
     <div class="grid-x grid-padding-x">

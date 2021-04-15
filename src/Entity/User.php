@@ -101,13 +101,13 @@ class User implements UserInterface {
     private $vacatures;
 
     /**
-     * @ORM\OneToMany(targetEntity=Solicitatie::class, mappedBy="user_id", orphanRemoval=true)
+     * @ORM\OneToMany(targetEntity=Sollicitatie::class, mappedBy="user_id", orphanRemoval=true)
      */
-    private $solicitaties;
+    private $sollicitaties;
 
     public function __construct() {
         $this->vacatures = new ArrayCollection();
-        $this->solicitaties = new ArrayCollection();
+        $this->sollicitaties = new ArrayCollection();
     }
 
     public function getId(): ?int {
@@ -268,26 +268,26 @@ class User implements UserInterface {
     }
 
     /**
-     * @return Collection|Solicitatie[]
+     * @return Collection|Sollicitatie[]
      */
-    public function getSolicitaties(): Collection {
-        return $this->solicitaties;
+    public function getSollicitaties(): Collection {
+        return $this->sollicitaties;
     }
 
-    public function addSolicitaty(Solicitatie $solicitaty): self {
-        if (!$this->solicitaties->contains($solicitaty)) {
-            $this->solicitaties[] = $solicitaty;
-            $solicitaty->setUserId($this);
+    public function addSollicitaty(Sollicitatie $sollicitaty): self {
+        if (!$this->sollicitaties->contains($sollicitaty)) {
+            $this->sollicitaties[] = $sollicitaty;
+            $sollicitaty->setUserId($this);
         }
 
         return $this;
     }
 
-    public function removeSolicitaty(Solicitatie $solicitaty): self {
-        if ($this->solicitaties->removeElement($solicitaty)) {
+    public function removeSollicitaty(Sollicitatie $sollicitaty): self {
+        if ($this->sollicitaties->removeElement($sollicitaty)) {
             // set the owning side to null (unless already changed)
-            if ($solicitaty->getUserId() === $this) {
-                $solicitaty->setUserId(null);
+            if ($sollicitaty->getUserId() === $this) {
+                $sollicitaty->setUserId(null);
             }
         }
 
@@ -337,6 +337,17 @@ class User implements UserInterface {
     public function setRoles($roles)
     {
         $this->roles=$roles;
+    }
+    
+    public function setBedrijfsnaam($string): User
+    {
+        $this->voornaam="";
+        $this->achternaam=$string;
+    }
+    
+    public function getBedrijfsnaam()
+    {
+        return $this->achternaam;
     }
 
 }

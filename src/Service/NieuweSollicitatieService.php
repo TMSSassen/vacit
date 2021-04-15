@@ -8,18 +8,18 @@
 
 namespace App\Service;
 
-use App\Entity\Solicitatie;
+use App\Entity\Sollicitatie;
 
 /**
  * Description of NieuweSollicitatieService
  *
  * @author TSassen
  */
-class NieuweSolicitatieService {
+class NieuweSollicitatieService {
     //put your code here
-    public function createNewSolicitatie($user,$vacature,$motivatie)
+    public function createNewSollicitatie($user,$vacature,$motivatie)
     {
-        $newSol=new Solicitatie();
+        $newSol=new Sollicitatie();
         $newSol->setDatum(new DateTime('now'));
         $newSol->setVacature($vacature);
         $newSol->setUser($user);

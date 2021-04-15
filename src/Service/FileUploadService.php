@@ -17,7 +17,7 @@ use App\Library\FileUpload;
  */
 class FileUploadService {
 
-    static function upload_file($name = 'file', $path = null) {/// Dit bijvoorkeur uit je .env halen!
+    static function upload_file($allowedExtensions,$name = 'file', $path = null) {/// Dit bijvoorkeur uit je .env halen!
         $path = $path ?? \getenv('FILE_UPLOAD_PATH');
 
         $file_id = \uniqid();

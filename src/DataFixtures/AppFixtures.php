@@ -5,7 +5,7 @@ namespace App\DataFixtures;
 use Doctrine\Bundle\FixturesBundle\Fixture;
 use Doctrine\Persistence\ObjectManager;
 use \App\Factory\UserFactory;
-use \App\Factory\SolicitatieFactory;
+use \App\Factory\SollicitatieFactory;
 use App\Factory\VacatureFactory;
 use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
 
@@ -25,7 +25,7 @@ class AppFixtures extends Fixture
             ];
         });
 
-        SolicitatieFactory::createMany(50, function() {
+        SollicitatieFactory::createMany(50, function() {
             return [
                 'user' => UserFactory::random(),
                 'vacature' => VacatureFactory::random()

@@ -2,15 +2,15 @@
 
 namespace App\Entity;
 
-use App\Repository\SolicitatieRepository;
+use App\Repository\SollicitatieRepository;
 use App\Entity\User;
 use App\Entity\Vacature;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * @ORM\Entity(repositoryClass=SolicitatieRepository::class)
+ * @ORM\Entity(repositoryClass=SollicitatieRepository::class)
  */
-class Solicitatie
+class Sollicitatie
 {
     /**
      * @ORM\Id
@@ -25,13 +25,13 @@ class Solicitatie
     private $datum;
 
     /**
-     * @ORM\ManyToOne(targetEntity=User::class, inversedBy="solicitaties")
+     * @ORM\ManyToOne(targetEntity=User::class, inversedBy="sollicitaties")
      * @ORM\JoinColumn(nullable=false)
      */
     private $user;
 
     /**
-     * @ORM\ManyToOne(targetEntity=Vacature::class, inversedBy="solicitaties")
+     * @ORM\ManyToOne(targetEntity=Vacature::class, inversedBy="sollicitaties")
      * @ORM\JoinColumn(nullable=false)
      */
     private $vacature;

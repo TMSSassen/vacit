@@ -22,7 +22,8 @@ class ProfielController extends AbstractController
         if(!$profile){
             throw new InvalidParameterException();
         }
-        if($currentUser->getId()==$id || $this->isGranted('ROLE_ADMIN'))
+        if($this->isGranted('ROLE_ADMIN')
+                || ($this->isGranted('IS_AUTHENTICATED_FULLY') && $currentUser->getId()==$id ))
         {
             return $this->editableTemplate($request,$profile);
         }
