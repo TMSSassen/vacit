@@ -1,5 +1,6 @@
 {% extends 'base.html.twig' %}
 {% block javascripts %}
+    <script src="{{ asset('assets/DataTables-1.10.24/js/jquery.dataTables.min.js') }}"></script>
     <script src="{{ asset('assets/DataTables-1.10.24/js/dataTables.foundation.min.js') }}"></script>
 {% endblock %}
 
@@ -9,4 +10,5 @@
 {% endblock %}
 
 {% block main %}
+    {% include "vacature_detail/vacature_table.html.twig" %}
 {% endblock %}

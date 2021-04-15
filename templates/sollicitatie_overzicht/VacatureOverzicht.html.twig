@@ -1,0 +1,37 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello SollicitatieOverzichtController!{% endblock %}
+
+{% block javascripts %}
+    <script src="{{ asset('assets/DataTables-1.10.24/js/jquery.dataTables.min.js') }}"></script>
+    <script src="{{ asset('assets/DataTables-1.10.24/js/dataTables.foundation.min.js') }}"></script>
+    <script>$(document).ready(function () {
+            $('#vac_table').DataTable();
+        });
+    </script>
+{% endblock %}
+
+{% block stylesheets %}
+    <link rel="stylesheet" href="{{ asset('assets/DataTables-1.10.24/css/dataTables.foundation.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('assets/css/vacaturedetail.css') }}">
+{% endblock %}
+
+{% block main %}
+    <table id="vac_table">
+        <thead>
+            <tr>
+                <th>datum</th>
+                <th>vacature</th>
+                <th>niveau</th>
+            </tr></thead>
+        <tbody>
+            {% for vacature in all_vacatures %}
+                <tr>
+                    <td>{{ vacature.datum|date("d/m/Y") }}</td>
+                    <td>{{ vacature.titel }}</td>
+                    <td>{{ vacature.niveau }}</td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+{% endblock %}

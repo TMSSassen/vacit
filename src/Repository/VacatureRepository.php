@@ -5,6 +5,7 @@ namespace App\Repository;
 use App\Entity\Vacature;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Persistence\ManagerRegistry;
+use App\Entity\User;
 
 /**
  * @method Vacature|null find($id, $lockMode = null, $lockVersion = null)
@@ -24,6 +25,19 @@ class VacatureRepository extends ServiceEntityRepository
     
     public function getMostRecent($maxResults=3){
         return $this->findBy([],['datum'=>'ASC'],$maxResults);
+    }
+    /**
+     *  @return Vacature[] Returns an array of Vacature objects
+     */    
+    public function findAllOfBedrijf(User $user)
+    {
+        return $this->createQueryBuilder('v')
+            ->andWhere('v.bedrijf = :user_id')
+            ->setParameter('user_id', $user->getID())
+            ->orderBy('v.id', 'ASC')
+            ->getQuery()
+            ->getResult()
+        ;
     }
 
     // /**

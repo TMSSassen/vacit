@@ -1,0 +1,14 @@
+<table>
+    <tr>
+        <th>datum</th>
+        <th>vacature</th>
+        <th>niveau</th>
+    </tr>
+    {% for vacature in similar_vacatures %}
+        <tr>
+            <td>{{ vacature.datum|date("d/m/Y") }}</td>
+            <td>{{ vacature.titel }}</td>
+            <td>{{ vacature.niveau }}</td>
+        </tr>
+    {% endfor %}
+</table>

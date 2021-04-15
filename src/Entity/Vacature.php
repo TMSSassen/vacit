@@ -101,7 +101,7 @@ class Vacature
         return $this;
     }
 
-    public function getBedrijf(): ?user
+    public function getBedrijf(): ?User
     {
         return $this->bedrijf;
     }
