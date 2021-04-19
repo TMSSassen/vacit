@@ -1,0 +1,35 @@
+{% extends 'base.html.twig' %}
+
+{% block javascripts %}
+    <script src="{{ asset('assets/DataTables-1.10.24/js/jquery.dataTables.min.js') }}"></script>
+    <script src="{{ asset('assets/DataTables-1.10.24/js/dataTables.foundation.min.js') }}"></script>
+    <script src="{{ asset('assets/js/sollicitatieoverzicht.js') }}"></script>
+{% endblock %}
+
+{% block stylesheets %}
+    <link rel="stylesheet" href="{{ asset('assets/DataTables-1.10.24/css/dataTables.foundation.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('assets/css/vacaturedetail.css') }}">
+{% endblock %}
+
+{% block main %}
+    <table id="sol_table">
+        <thead>
+            <tr>
+                <th>datum</th>
+                <th>vacature</th>
+                <th>bedrijf</th>
+                <th>uitgenodigd</th>
+            </tr></thead>
+        <tbody>
+            {% for sollicitatie in all_sollicitaties %}
+                <tr>
+                    <td>{{ sollicitatie.datum|date("d/m/Y") }}</td>
+                    <td>{{ sollicitatie.vacature.titel }}</td>
+                    <td>{{ sollicitatie.vacature.bedrijf.bedrijfsnaam }}</td>
+                    {% if sollicitatie.uitgenodigd %}<td>ja</td>
+                    {% else %}<td class='checkUitnodigStatus' data-id="{{ sollicitatie.id }}">-</td>{% endif %}
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+{% endblock %}

@@ -37,21 +37,12 @@ class VacatureOverzichtController  extends AbstractController{
         $this->newVacService = $newVacService;
         $this->vacRep = $vacRep;
     }
-    //put your code here
     /**
      * @Route("/vacature/overzicht", name="vacature_overzicht")
      */
     public function vacatureOverzicht(Request $request): Response
     {
-        $submittedToken = $request->request->get('token');
-        if ($this->isCsrfTokenValid('nieuweVacature', $submittedToken)) {
-            $this->newVacService->createNewVacature($this->getUser(),
-                    $request->request->get('beschrijving'),
-                    $request->request->get('niveau'),
-                    $request->request->get('titel'),
-                    $request->request->get('platform'));
-        }
-        return $this->render('sollicitatie_overzicht/VacatureOverzicht.html.twig', [
+        return $this->render('vacature_overzicht/VacatureOverzicht.html.twig', [
             'controller_name' => 'VacatureOverzichtController',
             'all_vacatures'=>$this->vacRep->findAll()
         ]);

@@ -1,0 +1,37 @@
+{% extends 'base.html.twig' %}
+
+{% block javascripts %}
+    <script src="{{ asset('assets/DataTables-1.10.24/js/jquery.dataTables.min.js') }}"></script>
+    <script src="{{ asset('assets/DataTables-1.10.24/js/dataTables.foundation.min.js') }}"></script>
+    <script>$(document).ready(function () {
+            $('#sol_table').DataTable();
+        });
+    </script>
+{% endblock %}
+
+{% block stylesheets %}
+    <link rel="stylesheet" href="{{ asset('assets/DataTables-1.10.24/css/dataTables.foundation.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('assets/css/vacaturedetail.css') }}">
+{% endblock %}
+
+{% block main %}
+    <table id="sol_table">
+        <thead>
+            <tr>
+                <th>datum</th>
+                <th>vacature</th>
+                <th>{{ user_colum_name }}</th>
+                <th>uitgenodigd</th>
+            </tr></thead>
+        <tbody>
+            {% for sollicitatie in all_sollicitaties %}
+                <tr>
+                    <td>{{ sollicitatie.datum|date("d/m/Y") }}</td>
+                    <td>{{ sollicitatie.vacature.titel }}</td>
+                    <td>{{ user_column }}</td>
+                    <td>{{ sollicitatie.uitgenodigd }}</td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+{% endblock %}
